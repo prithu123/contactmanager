@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import Contacts from './components/Contacts'
-import Header from './components/Header'
+import Contacts from './components/contact/Contacts'
+import AddContact from './components/contact/AddContact'
+import Header from './components/layout/Header'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Provider} from './Context'
 
@@ -13,6 +14,7 @@ import {Provider} from './Context'
         <div className='App'>
               <Header branding ="Contact Manager "/>
               <div className='container'>
+                <AddContact/>
                <Contacts/>
               </div>
         </div>

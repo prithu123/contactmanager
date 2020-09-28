@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Contact from './components/Contact';
+import Contact from './components/contact/Contact';
 
 const Context=React.createContext();
 
@@ -11,6 +11,11 @@ const reducer=(state,action)=>{
                 ...state,
                 contacts:state.contacts.filter(contact=> contact.id!==action.payload)
             }
+            case 'ADD_CONTACT':
+                return {
+                    ...state,
+                    contacts:[action.payload,...state.contacts]
+                }
         default :
             return state    
     }
