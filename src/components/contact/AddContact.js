@@ -23,6 +23,7 @@ import {v4 as uuid} from 'uuid';
         }
         dispatch({type:"ADD_CONTACT", payload:newContact})
         this.setState({name:'',email:'',phone:''})
+        this.props.history.push('/')
      }
 
     render() {
