@@ -1,2 +1,2 @@
 # Contactmanager
- React application
+ React js application
