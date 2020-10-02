@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {Consumer} from '../../Context'
+import axios from 'axios'
 
 
  class Contact extends Component {
@@ -8,15 +9,18 @@ import {Consumer} from '../../Context'
          showContactInfo:false
      }
      onClickDelete= (id,dispatch)=>{
+         
+         axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+         .then(res=>dispatch({type:'DELETE_CONTACT',payload:id}))
 
-         dispatch({type:'DELETE_CONTACT',payload:id})
+         
 
      }
      onShowClick =()=>{
          this.setState({showContactInfo:!this.state.showContactInfo})
      }
     render() {
-        const {id,name,email,phoneNumber}=this.props.contact
+        const {id,name,email,phone}=this.props.contact
         const {showContactInfo}=this.state
         return (
             <Consumer>
@@ -32,7 +36,7 @@ import {Consumer} from '../../Context'
                         </h4>
                         {showContactInfo ? ( <ul className="list-group">
                                <li className="list-group-item">Email : {email} </li>
-                                <li className="list-group-item">PhoneNumber : {phoneNumber} </li>
+                                <li className="list-group-item">PhoneNumber : {phone} </li>
                             </ul>):null}
                            
         
