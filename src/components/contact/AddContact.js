@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Consumer} from '../../Context'
-import {v4 as uuid} from 'uuid';
+import axios from 'axios'
 
  class AddContact extends Component {
 
@@ -16,12 +16,13 @@ import {v4 as uuid} from 'uuid';
          const{name,email,phone} = this.state
 
          const newContact={
-            id: uuid(),
             name,
             email,
             phone
         }
-        dispatch({type:"ADD_CONTACT", payload:newContact})
+        axios.post(`https://jsonplaceholder.typicode.com/users`,newContact)
+        .then(res=> dispatch({type:"ADD_CONTACT", payload:res.data}))
+       
         this.setState({name:'',email:'',phone:''})
         this.props.history.push('/')
      }
